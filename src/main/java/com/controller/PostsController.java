@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/post")
-public class PostController {
+public class PostsController {
 
     @PostMapping
     public ResponseData createPost() {
@@ -33,13 +33,13 @@ public class PostController {
         return null;
     }
 
-    @GetMapping
-    public ResponseData getPostById() {
-        // todo
-        return null;
-    }
+//    @GetMapping("/{id}")
+//    public ResponseData getPostsById() {
+//        // todo
+//        return null;
+//    }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseData searchPostByTagName() {
         // todo
         return null;
