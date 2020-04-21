@@ -11,7 +11,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class AdminDetail extends BaseDomain {
     public static final String COLLECTION = "admin";
     public static final String USERNAME = "username";
-    public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
     public static final String BIRTHDAY = "birthday";
     public static final String ADDRESS = "address";
@@ -19,9 +18,6 @@ public class AdminDetail extends BaseDomain {
 
     @Field(USERNAME)
     private String username;
-
-    @Field(EMAIL)
-    private String email;
 
     @Field(PASSWORD)
     private String password;
