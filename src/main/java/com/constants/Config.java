@@ -9,7 +9,7 @@ public class Config {
 
     static {
         API_IGNORE_AUTHENTICATION.add("/login");
-        API_IGNORE_AUTHENTICATION.add("/logout");
+        API_IGNORE_AUTHENTICATION.add("/remove-token");
         API_IGNORE_AUTHENTICATION.add("/post");
     }
 }

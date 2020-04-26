@@ -20,14 +20,14 @@ public class HandlerInterceptorConfig implements org.springframework.web.servlet
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String apiRequest = request.getRequestURI();
         System.out.println("apiRequest: " + apiRequest);
-//        Boolean apiIgnoredValid = apiIgnoreModifyToken(apiRequest);
-//        System.out.println("apiIgnoredValid: " + apiIgnoredValid);
-//        if (apiIgnoredValid) {
-//            return true;
-//        }
+        Boolean apiIgnoredValid = apiIgnoreModifyToken(apiRequest);
+        System.out.println("apiIgnoredValid: " + apiIgnoredValid);
+        if (apiIgnoredValid) {
+            return true;
+        }
 
         // todo handle exception.
-        return true;
+        return false;
     }
 
     @Override

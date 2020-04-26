@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/login")
-public class LoginController extends BaseController {
+public class LoginController {
 
     private final AdminService adminService;
 

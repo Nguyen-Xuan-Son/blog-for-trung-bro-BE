@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Component
 public class Interceptor extends WebMvcConfigurerAdapter {
-
+//
     @Autowired
     HandlerInterceptorConfig handlerInterceptorConfig;
 
