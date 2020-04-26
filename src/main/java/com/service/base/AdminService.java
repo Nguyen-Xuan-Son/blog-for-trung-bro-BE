@@ -6,4 +6,6 @@ public interface AdminService {
 
     String loginAdmin(LoginAdminRequest loginUserRequest);
 
+    String logoutAdmin(String token);
+
 }

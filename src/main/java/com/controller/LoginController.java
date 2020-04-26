@@ -19,7 +19,7 @@ public class LoginController extends BaseController {
 
     private final AdminService adminService;
 
-    @PostMapping
+    @PostMapping()
     private ResponseData login(@RequestBody LoginAdminRequest loginAdminRequest) {
         String token = adminService.loginAdmin(loginAdminRequest);
         AdminEntity adminEntity = new AdminEntity(token);
