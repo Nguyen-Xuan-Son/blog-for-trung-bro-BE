@@ -2,11 +2,13 @@ package com.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Document(collection = CategoryDetail.COLLECTION)
 public class CategoryDetail extends BaseDomain {
     public static final String COLLECTION = "category";
@@ -15,10 +17,10 @@ public class CategoryDetail extends BaseDomain {
     public static final String POST_NUMBER = "post_number";
 
     @Field(NAME)
-    public String name;
+    private String name;
 
     @Field(DESCRIPTION)
-    public String description;
+    private String description;
 
     @Field(POST_NUMBER)
     private Long post_number;

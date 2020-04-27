@@ -2,11 +2,13 @@ package com.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Document(collection = AdminDetail.COLLECTION)
 public class AdminDetail extends BaseDomain {
     public static final String COLLECTION = "admin";

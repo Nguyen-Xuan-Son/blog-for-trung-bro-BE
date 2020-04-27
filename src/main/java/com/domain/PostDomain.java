@@ -2,11 +2,13 @@ package com.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Document(collection = PostDomain.COLLECTION)
 public class PostDomain extends BaseDomain {
 

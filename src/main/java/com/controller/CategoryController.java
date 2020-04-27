@@ -1,7 +1,11 @@
 package com.controller;
 
+import com.constants.ResponseResult;
+import com.domain.CategoryDetail;
+import com.entity.admin.CategoryEntity;
 import com.request.CategoryRequest;
 import com.service.base.CategoryService;
+import com.utils.response.EntityResponse;
 import com.utils.response.ResponseData;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +19,10 @@ public class CategoryController {
 
     @PostMapping
     public ResponseData createCategory(@RequestBody CategoryRequest categoryRequest) {
-        System.out.println("categoryRequest: " + categoryRequest.toString());
-        categoryService.createCategory(categoryRequest);
-        return null;
+        CategoryDetail categoryDetail = categoryService.createCategory(categoryRequest);
+        CategoryEntity categoryEntity = new CategoryEntity(categoryDetail);
+        EntityResponse entityResponse = new EntityResponse(ResponseResult.SUCCESS, categoryEntity);
+        return entityResponse;
     }
 
     @PutMapping("/{categoryId}")

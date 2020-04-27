@@ -14,9 +14,8 @@ public class ImplCategoryService implements CategoryService {
     private final CategoryRepository categoryRepository;
 
     @Override
-    public void createCategory(CategoryRequest categoryRequest) {
+    public CategoryDetail createCategory(CategoryRequest categoryRequest) {
         CategoryDetail categoryDetail = ModelMapperCustomize.toObject(categoryRequest, CategoryDetail.class);
-        System.out.println("categoryDetail" + categoryDetail.toString());
-        categoryRepository.insertCategory(categoryDetail);
+        return categoryRepository.insertCategory(categoryDetail);
     }
 }

@@ -1,9 +1,10 @@
 package com.service.base;
 
+import com.domain.CategoryDetail;
 import com.request.CategoryRequest;
 
 public interface CategoryService {
 
-    void createCategory(CategoryRequest categoryRequest);
+    CategoryDetail createCategory(CategoryRequest categoryRequest);
 
 }

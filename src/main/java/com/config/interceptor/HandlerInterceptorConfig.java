@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @AllArgsConstructor
 @Controller
-public class HandlerInterceptorConfig implements org.springframework.web.servlet.HandlerInterceptor {
+public class HandlerInterceptorConfig implements org.springframework.web.servlet.HandlerInterceptor  {
 
     private final SessionCache sessionCache;
 
@@ -33,13 +33,12 @@ public class HandlerInterceptorConfig implements org.springframework.web.servlet
 
         String token = request.getHeader("Authorization");
         Boolean isTokenValid = sessionCache.checkValidToken(token);
-
         if (isTokenValid) {
             sessionCache.resetTimeExpiredToken(token);
             return true;
+        } else {
+            throw new ApplicationException(ResponseResult.INVALID_ACCESS_TOKEN, Message.TOKEN_INVALID);
         }
-
-        throw new ApplicationException(ResponseResult.INVALID_ACCESS_TOKEN, Message.TOKEN_INVALID);
     }
 
     @Override
