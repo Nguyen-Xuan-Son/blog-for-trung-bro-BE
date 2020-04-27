@@ -20,7 +20,6 @@ public class SessionCache {
 
         SessionEntity sessionEntity = new SessionEntity(token, currentTime, userId);
         sessions.put(token, sessionEntity);
-        System.out.println("sessions: " + sessions.toString());
     }
 
     public SessionEntity getInfoSessionByToken(String token) {

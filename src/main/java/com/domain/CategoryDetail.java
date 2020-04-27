@@ -15,10 +15,10 @@ public class CategoryDetail extends BaseDomain {
     public static final String POST_NUMBER = "post_number";
 
     @Field(NAME)
-    private String name;
+    public String name;
 
     @Field(DESCRIPTION)
-    private String description;
+    public String description;
 
     @Field(POST_NUMBER)
     private Long post_number;

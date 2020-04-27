@@ -1,5 +1,7 @@
 package com.controller;
 
+import com.request.CategoryRequest;
+import com.service.base.CategoryService;
 import com.utils.response.ResponseData;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -9,26 +11,32 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/category")
 public class CategoryController {
 
+    private CategoryService categoryService;
+
     @PostMapping
-    public ResponseData createCategory() {
+    public ResponseData createCategory(@RequestBody CategoryRequest categoryRequest) {
+        System.out.println("categoryRequest: " + categoryRequest.toString());
+        categoryService.createCategory(categoryRequest);
+        return null;
+    }
+
+    @PutMapping("/{categoryId}")
+    public ResponseData updateCategory(
+            @PathVariable String categoryId,
+            @RequestBody CategoryRequest categoryRequest
+    ) {
         // todo
         return null;
     }
 
-    @PutMapping
-    public ResponseData updateCategory() {
+    @DeleteMapping("/{categoryId}")
+    public ResponseData deleteCategory(@PathVariable String categoryId) {
         // todo
         return null;
     }
 
-    @DeleteMapping
-    public ResponseData deleteCategory() {
-        // todo
-        return null;
-    }
-
-    @GetMapping
-    public ResponseData getCategories() {
+    @GetMapping("/{categoryId}")
+    public ResponseData getCategories(@PathVariable String categoryId) {
         // todo
         return null;
     }
