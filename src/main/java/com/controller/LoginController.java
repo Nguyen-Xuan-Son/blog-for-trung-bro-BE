@@ -1,7 +1,7 @@
 package com.controller;
 
 import com.constants.ResponseResult;
-import com.entity.admin.AdminEntity;
+import com.entity.AdminEntity;
 import com.request.LoginAdminRequest;
 import com.service.base.AdminService;
 import com.utils.response.EntityResponse;

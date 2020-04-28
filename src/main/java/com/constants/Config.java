@@ -10,6 +10,6 @@ public class Config {
     static {
         API_IGNORE_AUTHENTICATION.add("/login");
         API_IGNORE_AUTHENTICATION.add("/remove-token");
-        API_IGNORE_AUTHENTICATION.add("/post");
+        API_IGNORE_AUTHENTICATION.add("/category/all");
     }
 }

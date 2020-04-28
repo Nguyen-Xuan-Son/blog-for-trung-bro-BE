@@ -8,6 +8,8 @@ import com.utils.ModelMapperCustomize;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class ImplCategoryService implements CategoryService {
@@ -17,5 +19,10 @@ public class ImplCategoryService implements CategoryService {
     public CategoryDetail createCategory(CategoryRequest categoryRequest) {
         CategoryDetail categoryDetail = ModelMapperCustomize.toObject(categoryRequest, CategoryDetail.class);
         return categoryRepository.insertCategory(categoryDetail);
+    }
+
+    @Override
+    public List<CategoryDetail> getCategories() {
+        return categoryRepository.getAllCategories();
     }
 }

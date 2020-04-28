@@ -1,7 +1,7 @@
 package com.cache;
 
 import com.constants.Config;
-import com.entity.admin.SessionEntity;
+import com.entity.SessionEntity;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 

@@ -1,23 +1,23 @@
-package com.entity.admin;
+package com.entity;
 
 import com.constants.ResponseResult;
-import com.entity.BaseEntity;
+import com.domain.CategoryDetail;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.json.simple.JSONObject;
 
 @Data
 @AllArgsConstructor
-public class AdminEntity implements BaseEntity {
+public class CategoryEntity implements BaseEntity {
 
-    private String token;
+    private CategoryDetail categoryDetail;
 
     @Override
     public JSONObject toJsonObject() {
         JSONObject json = new JSONObject();
 
-        if (token != null) {
-            json.put(ResponseResult.TOKEN, token);
+        if (categoryDetail != null) {
+            json.put(ResponseResult.DATA, categoryDetail);
         }
 
         return json;

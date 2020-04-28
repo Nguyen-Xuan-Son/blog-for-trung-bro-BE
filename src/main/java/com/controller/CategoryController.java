@@ -2,13 +2,16 @@ package com.controller;
 
 import com.constants.ResponseResult;
 import com.domain.CategoryDetail;
-import com.entity.admin.CategoryEntity;
+import com.entity.CategoryEntity;
 import com.request.CategoryRequest;
+import com.response.CategoriesResponse;
 import com.service.base.CategoryService;
 import com.utils.response.EntityResponse;
 import com.utils.response.ResponseData;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -41,9 +44,16 @@ public class CategoryController {
     }
 
     @GetMapping("/{categoryId}")
-    public ResponseData getCategories(@PathVariable String categoryId) {
+    public ResponseData getCategoryById(@PathVariable String categoryId) {
         // todo
         return null;
+    }
+
+    @GetMapping("/all")
+    public ResponseData getCategories() {
+        List<CategoryDetail> categoryDetails =  categoryService.getCategories();
+        CategoriesResponse categoriesResponse = new CategoriesResponse(categoryDetails);
+        return categoriesResponse;
     }
 
 }

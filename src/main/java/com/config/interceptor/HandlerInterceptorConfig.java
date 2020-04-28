@@ -25,6 +25,7 @@ public class HandlerInterceptorConfig implements org.springframework.web.servlet
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         String apiRequest = request.getRequestURI();
+        System.out.println("apiRequest: " + apiRequest);
         Boolean apiIgnoredValid = apiIgnoreModifyToken(apiRequest);
 
         if (apiIgnoredValid) {
