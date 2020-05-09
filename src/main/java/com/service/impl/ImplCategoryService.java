@@ -32,4 +32,9 @@ public class ImplCategoryService implements CategoryService {
     public List<CategoryDetail> getCategories() {
         return categoryRepository.getAllCategories();
     }
+
+    @Override
+    public void deleteCategory(String categoryId) {
+        categoryRepository.deleteCategory(categoryId);
+    }
 }

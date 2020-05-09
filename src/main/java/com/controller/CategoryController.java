@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.constants.Message;
 import com.constants.ResponseResult;
 import com.domain.CategoryDetail;
 import com.entity.CategoryEntity;
@@ -9,6 +10,7 @@ import com.response.CategoriesResponse;
 import com.service.base.CategoryService;
 import com.utils.response.EntityResponse;
 import com.utils.response.ResponseData;
+import com.utils.response.StringResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,8 +44,9 @@ public class CategoryController {
 
     @DeleteMapping("/{categoryId}")
     public ResponseData deleteCategory(@PathVariable String categoryId) {
-        // todo
-        return null;
+        categoryService.deleteCategory(categoryId);
+        StringResponse entityResponse = new StringResponse(ResponseResult.SUCCESS, Message.DELETE_CATEGORY_SUCCESS);
+        return entityResponse;
     }
 
     @GetMapping("/{categoryId}")

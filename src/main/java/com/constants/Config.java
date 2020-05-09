@@ -13,5 +13,6 @@ public class Config {
         API_IGNORE_AUTHENTICATION.add(new IgnoreAuthenticateEntity("/login", "POST"));
         API_IGNORE_AUTHENTICATION.add(new IgnoreAuthenticateEntity("/remove-token", "GET"));
         API_IGNORE_AUTHENTICATION.add(new IgnoreAuthenticateEntity("/category", "GET"));
+        API_IGNORE_AUTHENTICATION.add(new IgnoreAuthenticateEntity("/post", "GET"));
     }
 }

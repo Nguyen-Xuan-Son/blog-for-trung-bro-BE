@@ -14,4 +14,6 @@ public interface CategoryService {
 
     List<CategoryDetail> getCategories();
 
+    void deleteCategory(String categoryId);
+
 }
