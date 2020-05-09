@@ -23,5 +23,5 @@ public class CategoryDetail extends BaseDomain {
     private String description;
 
     @Field(POST_NUMBER)
-    private Long post_number;
+    private Long postNumber;
 }

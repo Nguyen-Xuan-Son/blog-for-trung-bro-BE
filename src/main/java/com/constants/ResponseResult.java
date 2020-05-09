@@ -24,4 +24,5 @@ public class ResponseResult {
     public static final int EMAIL_REGISTERED = 413;
     public static final int USERNAME_UNREGISTERED = 414;
     public static final int INTERNAL_SERVER_ERROR = 500;
+    public static final int ACCESS_DENIED = 415;
 }

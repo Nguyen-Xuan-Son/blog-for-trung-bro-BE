@@ -4,8 +4,11 @@ import com.constants.ResponseResult;
 import com.domain.CategoryDetail;
 import com.entity.CategoryEntity;
 import com.request.CategoryRequest;
+import com.request.CategoryUpdateRequest;
 import com.response.CategoriesResponse;
+import com.response.CategoryResponse;
 import com.service.base.CategoryService;
+import com.utils.ModelMapperCustomize;
 import com.utils.response.EntityResponse;
 import com.utils.response.ResponseData;
 import lombok.AllArgsConstructor;
@@ -31,10 +34,12 @@ public class CategoryController {
     @PutMapping("/{categoryId}")
     public ResponseData updateCategory(
             @PathVariable String categoryId,
-            @RequestBody CategoryRequest categoryRequest
+            @RequestBody CategoryUpdateRequest categoryUpdateRequest
     ) {
-        // todo
-        return null;
+        CategoryDetail categoryDetail = categoryService.updateCategory(categoryId, categoryUpdateRequest);
+        CategoryEntity categoryEntity = new CategoryEntity(categoryDetail);
+        EntityResponse entityResponse = new EntityResponse(ResponseResult.SUCCESS, categoryEntity);
+        return entityResponse;
     }
 
     @DeleteMapping("/{categoryId}")

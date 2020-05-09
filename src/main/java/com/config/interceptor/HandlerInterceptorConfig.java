@@ -4,6 +4,7 @@ import com.cache.SessionCache;
 import com.constants.Config;
 import com.constants.Message;
 import com.constants.ResponseResult;
+import com.entity.IgnoreAuthenticateEntity;
 import com.utils.exception.ApplicationException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,22 +18,34 @@ public class HandlerInterceptorConfig implements org.springframework.web.servlet
 
     private final SessionCache sessionCache;
 
-    private boolean apiIgnoreModifyToken(String pathApi) {
-        Boolean result = Config.API_IGNORE_AUTHENTICATION.contains(pathApi);
+    private boolean apiIgnoreModifyToken(String pathApi, String methodApi) {
+        Boolean result = false;
+
+        for (IgnoreAuthenticateEntity ignoreAuthenticateEntity: Config.API_IGNORE_AUTHENTICATION) {
+            if (ignoreAuthenticateEntity.getMethodApi().equals(methodApi) && pathApi.startsWith(ignoreAuthenticateEntity.getPathApi())) {
+                return true;
+            }
+        }
+
         return result;
     }
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        String apiRequest = request.getRequestURI();
-        System.out.println("apiRequest: " + apiRequest);
-        Boolean apiIgnoredValid = apiIgnoreModifyToken(apiRequest);
+        String pathApiRequest = request.getRequestURI();
+        String methodApiRequest = request.getMethod();
+        Boolean apiIgnoredValid = apiIgnoreModifyToken(pathApiRequest, methodApiRequest);
 
         if (apiIgnoredValid) {
-            return true;
+            return apiIgnoreModifyToken(pathApiRequest, methodApiRequest);
         }
 
         String token = request.getHeader("Authorization");
+
+        if (token == null) {
+            throw new ApplicationException(ResponseResult.ACCESS_DENIED, Message.ACCESS_DENIED);
+        }
+
         Boolean isTokenValid = sessionCache.checkValidToken(token);
         if (isTokenValid) {
             sessionCache.resetTimeExpiredToken(token);
