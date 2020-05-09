@@ -1,23 +1,23 @@
 package com.entity;
 
 import com.constants.ResponseResult;
-import com.domain.CategoryDomain;
+import com.domain.PostDomain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.json.simple.JSONObject;
 
 @Data
 @AllArgsConstructor
-public class CategoryEntity implements BaseEntity {
+public class PostEntity implements BaseEntity {
 
-    private CategoryDomain categoryDetail;
+    private PostDomain postDetail;
 
     @Override
     public JSONObject toJsonObject() {
         JSONObject json = new JSONObject();
 
-        if (categoryDetail != null) {
-            json.put(ResponseResult.DATA, categoryDetail);
+        if (postDetail != null) {
+            json.put(ResponseResult.DATA, postDetail);
         }
 
         return json;

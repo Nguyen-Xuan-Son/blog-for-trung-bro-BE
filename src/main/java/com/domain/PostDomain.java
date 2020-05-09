@@ -15,6 +15,7 @@ public class PostDomain extends BaseDomain {
     public static final String COLLECTION = "post";
     public static final String TITLE = "title";
     public static final String NAME = "name";
+    public static final String CONTENT = "content";
     public static final String AUTHOR = "author";
     public static final String VIEWED_NUMBER = "viewed_number";
     public static final String COMMENT_NUMBER = "comment_number";
@@ -24,6 +25,9 @@ public class PostDomain extends BaseDomain {
 
     @Field(NAME)
     private String name;
+
+    @Field(CONTENT)
+    private String content;
 
     @Field(AUTHOR)
     private String author;
