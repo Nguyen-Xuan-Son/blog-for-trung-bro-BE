@@ -29,6 +29,11 @@ public class ImplCategoryService implements CategoryService {
     }
 
     @Override
+    public CategoryDetail getCategoryById(String categoryId) {
+        return categoryRepository.getCategoryById(categoryId);
+    }
+
+    @Override
     public List<CategoryDetail> getCategories() {
         return categoryRepository.getAllCategories();
     }

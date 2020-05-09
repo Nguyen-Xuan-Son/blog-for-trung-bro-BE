@@ -51,8 +51,10 @@ public class CategoryController {
 
     @GetMapping("/{categoryId}")
     public ResponseData getCategoryById(@PathVariable String categoryId) {
-        // todo
-        return null;
+        CategoryDetail categoryDetail = categoryService.getCategoryById(categoryId);
+        CategoryEntity categoryEntity = new CategoryEntity(categoryDetail);
+        EntityResponse entityResponse = new EntityResponse(ResponseResult.SUCCESS, categoryEntity);
+        return entityResponse;
     }
 
     @GetMapping("/all")

@@ -40,4 +40,9 @@ public class CategoryRepository extends BaseRepository {
         mongoOps.findAllAndRemove(query, CategoryDetail.class);
     }
 
+    public CategoryDetail getCategoryById (String categoryId) {
+        Query query = Query.query(Criteria.where(CategoryDetail.ID).is(categoryId));
+        return mongoOps.findOne(query, CategoryDetail.class);
+    }
+
 }
