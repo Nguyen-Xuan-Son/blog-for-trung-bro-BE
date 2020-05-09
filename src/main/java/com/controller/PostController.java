@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.constants.Message;
 import com.constants.ResponseResult;
 import com.domain.PostDomain;
 import com.entity.PostEntity;
@@ -7,6 +8,7 @@ import com.request.PostRequest;
 import com.service.base.PostService;
 import com.utils.response.EntityResponse;
 import com.utils.response.ResponseData;
+import com.utils.response.StringResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,10 +33,12 @@ public class PostController {
         return null;
     }
 
-    @DeleteMapping
-    public ResponseData deletePost() {
+    @DeleteMapping("/{postId}")
+    public ResponseData deletePost(@PathVariable String postId) {
         // todo
-        return null;
+        postService.deletePostById(postId);
+        StringResponse stringResponse = new StringResponse(ResponseResult.SUCCESS, Message.DELETE_POST_SUCCESS);
+        return stringResponse;
     }
 
     @GetMapping

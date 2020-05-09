@@ -7,6 +7,8 @@ public interface PostService {
 
     PostDomain createPost(PostRequest postRequest);
 
+    void deletePostById(String postId);
+
     PostDomain updatePostById();
 
 }

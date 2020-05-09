@@ -21,6 +21,11 @@ public class ImplPostService implements PostService {
     }
 
     @Override
+    public void deletePostById(String postId) {
+        postRepository.deletePostById(postId);
+    }
+
+    @Override
     public PostDomain updatePostById() {
         return null;
     }

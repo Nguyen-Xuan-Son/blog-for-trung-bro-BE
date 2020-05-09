@@ -8,5 +8,6 @@ public class Message {
     public static final String TOKEN_INVALID = "Token invalid.";
     public static final String ACCESS_DENIED = "Access denied.";
     public static final String DELETE_CATEGORY_SUCCESS = "Delete category success.";
+    public static final String DELETE_POST_SUCCESS = "Delete post success.";
 
 }
