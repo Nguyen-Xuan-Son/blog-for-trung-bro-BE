@@ -4,6 +4,6 @@ import org.json.simple.JSONObject;
 
 public interface BaseEntity {
 
-    public JSONObject toJsonObject();
+    JSONObject toJsonObject();
 
 }

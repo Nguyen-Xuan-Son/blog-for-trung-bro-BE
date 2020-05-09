@@ -18,6 +18,7 @@ public class PostDomain extends BaseDomain {
     public static final String CONTENT = "content";
     public static final String AUTHOR = "author";
     public static final String VIEWED_NUMBER = "viewed_number";
+    public static final String CATEGORY_ID = "category_id";
     public static final String COMMENT_NUMBER = "comment_number";
 
     @Field(TITLE)
@@ -37,4 +38,7 @@ public class PostDomain extends BaseDomain {
 
     @Field(COMMENT_NUMBER)
     private Long commentNumber;
+
+    @Field(CATEGORY_ID)
+    private String categoryId;
 }

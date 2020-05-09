@@ -19,7 +19,7 @@ public class PostController {
 
     @PostMapping
     public ResponseData createPost(@RequestBody PostRequest postRequest) {
-        PostDomain postDomain =  postService.createPost(postRequest);
+        PostDomain postDomain = postService.createPost(postRequest);
         PostEntity postEntity = new PostEntity(postDomain);
         EntityResponse entityResponse = new EntityResponse(ResponseResult.SUCCESS, postEntity);
         return entityResponse;
