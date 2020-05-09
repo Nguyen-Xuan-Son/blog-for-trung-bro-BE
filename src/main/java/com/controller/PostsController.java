@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.request.PostRequest;
 import com.utils.response.ResponseData;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -10,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 public class PostsController {
 
     @PostMapping
-    public ResponseData createPost() {
-        // todo
+    public ResponseData createPost(@RequestBody PostRequest postRequest) {
+        System.out.println("postRequest: " + postRequest.toString());
         return null;
     }
 
@@ -33,14 +34,8 @@ public class PostsController {
         return null;
     }
 
-//    @GetMapping("/{id}")
-//    public ResponseData getPostsById() {
-//        // todo
-//        return null;
-//    }
-
     @GetMapping("/{id}")
-    public ResponseData searchPostByTagName() {
+    public ResponseData getPostsById() {
         // todo
         return null;
     }

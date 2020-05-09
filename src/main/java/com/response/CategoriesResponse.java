@@ -1,6 +1,6 @@
 package com.response;
 
-import com.domain.CategoryDetail;
+import com.domain.CategoryDomain;
 import com.utils.response.ResponseData;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,6 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 public class CategoriesResponse extends ResponseData {
 
-    List<CategoryDetail> categoryEntities;
+    List<CategoryDomain> categoryEntities;
 
 }

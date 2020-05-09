@@ -3,7 +3,7 @@ package com.service.impl;
 import com.cache.SessionCache;
 import com.constants.Message;
 import com.constants.ResponseResult;
-import com.domain.AdminDetail;
+import com.domain.AdminDomain;
 import com.repository.AdminRepository;
 import com.request.LoginAdminRequest;
 import com.service.base.AdminService;
@@ -22,18 +22,18 @@ public class ImplAdminService implements AdminService {
 
     @Override
     public String loginAdmin(LoginAdminRequest loginAdminRequest) {
-        AdminDetail adminDetail = adminRepository.findAdminDetail(loginAdminRequest.getUsername());
+        AdminDomain adminDomain = adminRepository.findAdminDetail(loginAdminRequest.getUsername());
         String tokenResult = token.generationToken();
 
-        if (adminDetail == null) {
+        if (adminDomain == null) {
             throw new ApplicationException(ResponseResult.USERNAME_UNREGISTERED, Message.USER_UNREGISTERED);
         }
 
-        if (!loginAdminRequest.getPassword().equals(adminDetail.getPassword())) {
+        if (!loginAdminRequest.getPassword().equals(adminDomain.getPassword())) {
             throw new ApplicationException(ResponseResult.ERROR_USERNAME_OR_PASSWORD, Message.ERROR_USERNAME_OR_PASSWORD);
         }
 
-        sessionCache.setSession(adminDetail.getId(), tokenResult);
+        sessionCache.setSession(adminDomain.getId(), tokenResult);
 
         return tokenResult;
     }

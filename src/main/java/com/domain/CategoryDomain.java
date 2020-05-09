@@ -9,8 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = CategoryDetail.COLLECTION)
-public class CategoryDetail extends BaseDomain {
+@Document(collection = CategoryDomain.COLLECTION)
+public class CategoryDomain extends BaseDomain {
     public static final String COLLECTION = "category";
     public static final String NAME = "name";
     public static final String DESCRIPTION = "description";

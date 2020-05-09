@@ -9,8 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = AdminDetail.COLLECTION)
-public class AdminDetail extends BaseDomain {
+@Document(collection = AdminDomain.COLLECTION)
+public class AdminDomain extends BaseDomain {
     public static final String COLLECTION = "admin";
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";

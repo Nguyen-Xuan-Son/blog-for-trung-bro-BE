@@ -2,7 +2,7 @@ package com.controller;
 
 import com.constants.Message;
 import com.constants.ResponseResult;
-import com.domain.CategoryDetail;
+import com.domain.CategoryDomain;
 import com.entity.CategoryEntity;
 import com.request.CategoryRequest;
 import com.request.CategoryUpdateRequest;
@@ -25,8 +25,8 @@ public class CategoryController {
 
     @PostMapping
     public ResponseData createCategory(@RequestBody CategoryRequest categoryRequest) {
-        CategoryDetail categoryDetail = categoryService.createCategory(categoryRequest);
-        CategoryEntity categoryEntity = new CategoryEntity(categoryDetail);
+        CategoryDomain categoryDomain = categoryService.createCategory(categoryRequest);
+        CategoryEntity categoryEntity = new CategoryEntity(categoryDomain);
         EntityResponse entityResponse = new EntityResponse(ResponseResult.SUCCESS, categoryEntity);
         return entityResponse;
     }
@@ -36,8 +36,8 @@ public class CategoryController {
             @PathVariable String categoryId,
             @RequestBody CategoryUpdateRequest categoryUpdateRequest
     ) {
-        CategoryDetail categoryDetail = categoryService.updateCategory(categoryId, categoryUpdateRequest);
-        CategoryEntity categoryEntity = new CategoryEntity(categoryDetail);
+        CategoryDomain categoryDomain = categoryService.updateCategory(categoryId, categoryUpdateRequest);
+        CategoryEntity categoryEntity = new CategoryEntity(categoryDomain);
         EntityResponse entityResponse = new EntityResponse(ResponseResult.SUCCESS, categoryEntity);
         return entityResponse;
     }
@@ -51,16 +51,16 @@ public class CategoryController {
 
     @GetMapping("/{categoryId}")
     public ResponseData getCategoryById(@PathVariable String categoryId) {
-        CategoryDetail categoryDetail = categoryService.getCategoryById(categoryId);
-        CategoryEntity categoryEntity = new CategoryEntity(categoryDetail);
+        CategoryDomain categoryDomain = categoryService.getCategoryById(categoryId);
+        CategoryEntity categoryEntity = new CategoryEntity(categoryDomain);
         EntityResponse entityResponse = new EntityResponse(ResponseResult.SUCCESS, categoryEntity);
         return entityResponse;
     }
 
     @GetMapping("/all")
     public ResponseData getCategories() {
-        List<CategoryDetail> categoryDetails =  categoryService.getCategories();
-        CategoriesResponse categoriesResponse = new CategoriesResponse(categoryDetails);
+        List<CategoryDomain> categoryDomains =  categoryService.getCategories();
+        CategoriesResponse categoriesResponse = new CategoriesResponse(categoryDomains);
         return categoriesResponse;
     }
 

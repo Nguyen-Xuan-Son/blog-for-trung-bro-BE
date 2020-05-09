@@ -1,6 +1,6 @@
 package com.service.impl;
 
-import com.domain.CategoryDetail;
+import com.domain.CategoryDomain;
 import com.repository.CategoryRepository;
 import com.request.CategoryRequest;
 import com.request.CategoryUpdateRequest;
@@ -17,24 +17,24 @@ public class ImplCategoryService implements CategoryService {
     private final CategoryRepository categoryRepository;
 
     @Override
-    public CategoryDetail createCategory(CategoryRequest categoryRequest) {
-        CategoryDetail categoryDetail = ModelMapperCustomize.toObject(categoryRequest, CategoryDetail.class);
-        return categoryRepository.insertCategory(categoryDetail);
+    public CategoryDomain createCategory(CategoryRequest categoryRequest) {
+        CategoryDomain categoryDomain = ModelMapperCustomize.toObject(categoryRequest, CategoryDomain.class);
+        return categoryRepository.insertCategory(categoryDomain);
     }
 
     @Override
-    public CategoryDetail updateCategory(String categoryId, CategoryUpdateRequest categoryUpdateRequest) {
-        CategoryDetail categoryDetail = ModelMapperCustomize.toObject(categoryUpdateRequest, CategoryDetail.class);
-        return categoryRepository.updateCategory(categoryId, categoryDetail);
+    public CategoryDomain updateCategory(String categoryId, CategoryUpdateRequest categoryUpdateRequest) {
+        CategoryDomain categoryDomain = ModelMapperCustomize.toObject(categoryUpdateRequest, CategoryDomain.class);
+        return categoryRepository.updateCategory(categoryId, categoryDomain);
     }
 
     @Override
-    public CategoryDetail getCategoryById(String categoryId) {
+    public CategoryDomain getCategoryById(String categoryId) {
         return categoryRepository.getCategoryById(categoryId);
     }
 
     @Override
-    public List<CategoryDetail> getCategories() {
+    public List<CategoryDomain> getCategories() {
         return categoryRepository.getAllCategories();
     }
 

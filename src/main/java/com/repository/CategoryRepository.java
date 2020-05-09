@@ -1,6 +1,6 @@
 package com.repository;
 
-import com.domain.CategoryDetail;
+import com.domain.CategoryDomain;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -11,38 +11,38 @@ import java.util.List;
 @Component
 public class CategoryRepository extends BaseRepository {
 
-    public CategoryDetail insertCategory(CategoryDetail categoryDetail) {
-        return mongoOps.insert(categoryDetail);
+    public CategoryDomain insertCategory(CategoryDomain categoryDomain) {
+        return mongoOps.insert(categoryDomain);
     }
 
-    public CategoryDetail updateCategory(String categoryId, CategoryDetail categoryDetail) {
-        Query query = Query.query(Criteria.where(CategoryDetail.ID).is(categoryId));
+    public CategoryDomain updateCategory(String categoryId, CategoryDomain categoryDomain) {
+        Query query = Query.query(Criteria.where(CategoryDomain.ID).is(categoryId));
 
         Update update = new Update();
 
-        update.set(CategoryDetail.DESCRIPTION, categoryDetail.getDescription());
-        update.set(CategoryDetail.UPDATE_TIME, categoryDetail.getUpdateTime());
-        update.set(CategoryDetail.NAME, categoryDetail.getName());
-        update.set(CategoryDetail.POST_NUMBER, categoryDetail.getPostNumber());
+        update.set(CategoryDomain.DESCRIPTION, categoryDomain.getDescription());
+        update.set(CategoryDomain.UPDATE_TIME, categoryDomain.getUpdateTime());
+        update.set(CategoryDomain.NAME, categoryDomain.getName());
+        update.set(CategoryDomain.POST_NUMBER, categoryDomain.getPostNumber());
 
-        mongoOps.upsert(query, update, CategoryDetail.class);
+        mongoOps.upsert(query, update, CategoryDomain.class);
 
-        CategoryDetail categoryDetailResult = mongoOps.findOne(query, CategoryDetail.class);
-        return categoryDetailResult;
+        CategoryDomain categoryDomainResult = mongoOps.findOne(query, CategoryDomain.class);
+        return categoryDomainResult;
     }
 
-    public List<CategoryDetail> getAllCategories() {
-        return mongoOps.findAll(CategoryDetail.class);
+    public List<CategoryDomain> getAllCategories() {
+        return mongoOps.findAll(CategoryDomain.class);
     }
 
     public void deleteCategory(String categoryId) {
-        Query query = Query.query(Criteria.where(CategoryDetail.ID).is(categoryId));
-        mongoOps.findAllAndRemove(query, CategoryDetail.class);
+        Query query = Query.query(Criteria.where(CategoryDomain.ID).is(categoryId));
+        mongoOps.findAllAndRemove(query, CategoryDomain.class);
     }
 
-    public CategoryDetail getCategoryById (String categoryId) {
-        Query query = Query.query(Criteria.where(CategoryDetail.ID).is(categoryId));
-        return mongoOps.findOne(query, CategoryDetail.class);
+    public CategoryDomain getCategoryById (String categoryId) {
+        Query query = Query.query(Criteria.where(CategoryDomain.ID).is(categoryId));
+        return mongoOps.findOne(query, CategoryDomain.class);
     }
 
 }
