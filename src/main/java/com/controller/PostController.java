@@ -5,12 +5,15 @@ import com.constants.ResponseResult;
 import com.domain.PostDomain;
 import com.entity.PostEntity;
 import com.request.PostRequest;
+import com.response.PostsResponse;
 import com.service.base.PostService;
 import com.utils.response.EntityResponse;
 import com.utils.response.ResponseData;
 import com.utils.response.StringResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -42,9 +45,14 @@ public class PostController {
     }
 
     @GetMapping
-    public ResponseData queryPosts() {
-        // todo
-        return null;
+    public ResponseData queryPosts(
+            @RequestParam String page,
+            @RequestParam String size,
+            @RequestParam String categoryId
+    ) {
+        List<PostDomain> postDomains = postService.queryPost(page, size, categoryId);
+        PostsResponse postsResponse = new PostsResponse(postDomains);
+        return postsResponse;
     }
 
     @GetMapping("/{id}")

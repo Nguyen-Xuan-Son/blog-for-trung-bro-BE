@@ -59,7 +59,7 @@ public class CategoryController {
 
     @GetMapping("/all")
     public ResponseData getCategories() {
-        List<CategoryDomain> categoryDomains =  categoryService.getCategories();
+        List<CategoryDomain> categoryDomains = categoryService.getCategories();
         CategoriesResponse categoriesResponse = new CategoriesResponse(categoryDomains);
         return categoriesResponse;
     }
