@@ -4,6 +4,7 @@ import com.constants.Values;
 import com.domain.PostDomain;
 import com.repository.PostRepository;
 import com.request.PostRequest;
+import com.request.PostUpdateRequest;
 import com.service.base.PostService;
 import com.utils.ModelMapperCustomize;
 import lombok.AllArgsConstructor;
@@ -37,7 +38,10 @@ public class ImplPostService implements PostService {
     }
 
     @Override
-    public PostDomain updatePostById() {
-        return null;
+    public PostDomain updatePostById(String postId, PostUpdateRequest postUpdateRequest) {
+        PostDomain postDomain = ModelMapperCustomize.toObject(postUpdateRequest, PostDomain.class);
+        PostDomain postDomainResult =postRepository.updatePostById(postId, postDomain);
+        return postDomainResult;
     }
+
 }

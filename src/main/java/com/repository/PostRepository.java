@@ -5,6 +5,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,6 +20,22 @@ public class PostRepository extends BaseRepository {
     public void deletePostById(String postId) {
         Query query = Query.query(Criteria.where(PostDomain.ID).is(postId));
         mongoOps.findAllAndRemove(query, PostDomain.class);
+    }
+
+    public PostDomain updatePostById(String postId, PostDomain postDomain) {
+        Query query = Query.query(Criteria.where(PostDomain.ID).is(postId));
+
+        Update update = new Update();
+
+        update.set(PostDomain.TITLE, postDomain.getTitle());
+        update.set(PostDomain.CONTENT, postDomain.getContent());
+        update.set(PostDomain.CATEGORY_ID, postDomain.getCategoryId());
+        update.set(PostDomain.TAGS, postDomain.getTags());
+
+        mongoOps.upsert(query, update, PostDomain.class);
+
+        PostDomain postDomainResult = mongoOps.findOne(query, PostDomain.class);
+        return postDomainResult;
     }
 
     public List<PostDomain> queryPost(String page, String size, String categoryId) {

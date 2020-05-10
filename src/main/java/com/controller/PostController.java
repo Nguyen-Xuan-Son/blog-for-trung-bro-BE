@@ -5,6 +5,7 @@ import com.constants.ResponseResult;
 import com.domain.PostDomain;
 import com.entity.PostEntity;
 import com.request.PostRequest;
+import com.request.PostUpdateRequest;
 import com.response.PostsResponse;
 import com.service.base.PostService;
 import com.utils.response.EntityResponse;
@@ -30,10 +31,12 @@ public class PostController {
         return entityResponse;
     }
 
-    @PutMapping
-    public ResponseData updatePost() {
-        // todo
-        return null;
+    @PutMapping("/{postId}")
+    public ResponseData updatePost(@PathVariable String postId, @RequestBody PostUpdateRequest postUpdateRequest) {
+        PostDomain postDomain = postService.updatePostById(postId, postUpdateRequest);
+        PostEntity postEntity = new PostEntity(postDomain);
+        EntityResponse entityResponse = new EntityResponse(ResponseResult.SUCCESS, postEntity);
+        return entityResponse;
     }
 
     @DeleteMapping("/{postId}")
