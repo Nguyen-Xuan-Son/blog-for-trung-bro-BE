@@ -56,4 +56,9 @@ public class PostRepository extends BaseRepository {
         return result;
     }
 
+    public PostDomain findPostById(String postId) {
+        Query query = Query.query(Criteria.where(PostDomain.ID).is(postId));
+        PostDomain postDomainResult = mongoOps.findOne(query, PostDomain.class);
+        return postDomainResult;
+    }
 }

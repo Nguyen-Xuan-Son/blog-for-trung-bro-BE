@@ -58,10 +58,12 @@ public class PostController {
         return postsResponse;
     }
 
-    @GetMapping("/{id}")
-    public ResponseData getPostsById() {
-        // todo
-        return null;
+    @GetMapping("/{postId}")
+    public ResponseData getPostById(@PathVariable String postId) {
+        PostDomain postDomain = postService.findPostById(postId);
+        PostEntity postEntity = new PostEntity(postDomain);
+        EntityResponse entityResponse = new EntityResponse(ResponseResult.SUCCESS, postEntity);
+        return entityResponse;
     }
 
 }

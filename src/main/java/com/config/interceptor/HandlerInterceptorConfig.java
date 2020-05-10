@@ -37,7 +37,7 @@ public class HandlerInterceptorConfig implements org.springframework.web.servlet
         Boolean apiIgnoredValid = apiIgnoreModifyToken(pathApiRequest, methodApiRequest);
 
         if (apiIgnoredValid) {
-            return apiIgnoreModifyToken(pathApiRequest, methodApiRequest);
+            return true;
         }
 
         String token = request.getHeader("Authorization");

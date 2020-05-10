@@ -40,7 +40,13 @@ public class ImplPostService implements PostService {
     @Override
     public PostDomain updatePostById(String postId, PostUpdateRequest postUpdateRequest) {
         PostDomain postDomain = ModelMapperCustomize.toObject(postUpdateRequest, PostDomain.class);
-        PostDomain postDomainResult =postRepository.updatePostById(postId, postDomain);
+        PostDomain postDomainResult = postRepository.updatePostById(postId, postDomain);
+        return postDomainResult;
+    }
+
+    @Override
+    public PostDomain findPostById(String postId) {
+        PostDomain postDomainResult = postRepository.findPostById(postId);
         return postDomainResult;
     }
 

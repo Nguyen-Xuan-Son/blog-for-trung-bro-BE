@@ -16,5 +16,6 @@ public interface PostService {
 
     PostDomain updatePostById(String postId, PostUpdateRequest postUpdateRequest);
 
-}
+    PostDomain findPostById(String postId);
 
+}
