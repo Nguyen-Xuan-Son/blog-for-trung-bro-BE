@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,12 +22,16 @@ public class PostDomain extends BaseDomain {
     public static final String VIEWED_NUMBER = "viewed_number";
     public static final String CATEGORY_ID = "category_id";
     public static final String COMMENT_NUMBER = "comment_number";
+    public static final String TAGS = "tags";
 
     @Field(TITLE)
     private String title;
 
     @Field(NAME)
     private String name;
+
+    @Field(TAGS)
+    private List<String> tags;
 
     @Field(CONTENT)
     private String content;
