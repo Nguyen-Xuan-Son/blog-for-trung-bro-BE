@@ -2,6 +2,8 @@ package com.request;
 
 import lombok.Data;
 
+import java.util.ArrayList;
+
 @Data
 public class PostUpdateRequest {
 
@@ -9,7 +11,7 @@ public class PostUpdateRequest {
 
     private String content;
 
-    private String tags;
+    private ArrayList<String> tags;
 
     private String categoryId;
 
